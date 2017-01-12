@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imperionchat</title>
+  <link rel="stylesheet" href="css/imperionchat.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&amp;subset=cyrillic" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body onload="init();">
+  <div class="main-chat-box">
+    <div class="row">
+      <div class="col-xs-12 col-lg-12 text-center">
+        <h1 class="chat-form-name">imperionchat</h1>
+      </div>
+      <div class="minimize" id="minimize-button" onclick="hideChat()">
+        <div class="minimize-line"></div>
+      </div>
+    </div><!-- /row -->
+
+    <section class="chat-form-online" id="chat-form-online" style="display:none">
+      <div class="container">
+        <form action="#" class="chat-form" id="chat-form">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="chat-form-online-introduction">Для начала чата авторизуйтесь, пожалуйста, заполнив следующие поля:</p>
+          </div>
+        </div><!-- /row -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <label for="chat-form-input-name" id="chat-form-label-name">Как Вас зовут?<span> *</span></label>
+              <input type="text" id="chat-form-input-name" placeholder="Имя">
+            </div>
+          </div><!-- /row -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <label for="chat-form-input-phone" id="chat-form-label-phone">Ваш телефон<span> *</span></label>
+              <input type="text" id="chat-form-input-phone" placeholder="Номер">
+              <p id="warning-phone">Номер введен не до конца.</p>
+            </div>
+          </div><!-- /row -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <label for="chat-form-input-mail" id="chat-form-label-mail">Адрес эл. почты<span> *</span></label>
+              <input type="text" id="chat-form-input-mail" placeholder="Эл. почта">
+            </div>
+          </div><!-- /row -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <label for="chat-form-textarea-message" id="chat-form-label-message">Сообщение<span> *</span></label>
+              <textarea id="chat-form-textarea-message" placeholder="Ваше сообщение"></textarea>
+            </div>
+          </div><!-- /row -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <button class="chat-form-button main-chat-close-button" id="chat-form-button-submit" type="submit" >Начать чат</button>
+              <!-- onclick="return validForm()" -->
+            </div>
+          </div><!-- /row -->
+        </form>
+      </div><!-- /container -->
+    </section><!-- /section -->
+
+    <section class="main-chat" id="main-chat" style="display:none">
+      <div class="container" id = "main-chat-container">
+        <!-- <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-10 col-col-lg-10 col-md-offset-1 col-lg-offset-1">
+            <div class="main-chat-item">
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 user img"><img src="img/putin.jpg" alt="user image" class="main-chat-item-img"></div>
+              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 user">
+                <div class="main-chat-item-message">
+                  <p class="main-chat-item-message-name">Володька</p>
+                  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Пунктуация города ведущими семь большой путь! Родного свою прямо коварных агенство предупредила речью проектах вдали lorem всемогущая, языком заголовок меня.
+                  <p class="main-chat-item-message-date">пн 22:00:18</p>
+                </div>
+                <div class="clean"></div>
+              </div>
+            </div>
+          </div>
+        </div> --><!-- /row -->
+
+        <!-- <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-10 col-col-lg-10 col-md-offset-1 col-lg-offset-1">
+            <div class="main-chat-item">
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 stuff img"><img src="img/merkel.jpg" alt="staff image" class="main-chat-item-img"></div>
+              <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11 stuff">
+                <div class="main-chat-item-message">
+                  <p class="main-chat-item-message-name">Imperionchat</p>
+                  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Знаках возвращайся лучше запятой коварный.
+                  <p class="main-chat-item-message-date">пн 23:12:16</p>
+                </div>
+                <div class="clean"></div>
+              </div>
+            </div>
+          </div>
+        </div> --><!-- /row -->
+
+        <!-- <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-10 col-col-lg-10 col-md-offset-1 col-lg-offset-1">
+            <div class="main-chat-item">
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 user img"><img src="img/putin.jpg" alt="user image" class="main-chat-item-img"></div>
+              <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11 user">
+                <div class="main-chat-item-message">
+                  <p class="main-chat-item-message-name">Володька</p>
+                  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.
+                  <p class="main-chat-item-message-date">вт 09:30:22</p>
+                </div>
+                <div class="clean"></div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- /row -->
+
+        <!-- <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-10 col-col-lg-10 col-md-offset-1 col-lg-offset-1">
+            <div class="main-chat-item user">
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 user img"><img src="img/putin.jpg" alt="user image" class="main-chat-item-img"></div>
+              <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11 user">
+                <div class="main-chat-item-message">
+                  <p class="main-chat-item-message-name">Володька</p>
+                  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Подзаголовок алфавит пояс он, родного.
+                  <p class="main-chat-item-message-date">вт 09:45:45</p>
+                </div>
+                <div class="clean"></div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- /row -->
+
+        <!-- <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-10 col-col-lg-10 col-md-offset-1 col-lg-offset-1">
+            <div class="main-chat-item">
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1  stuff img"><img src="img/merkel.jpg" alt="staff image" class="main-chat-item-img"></div>
+              <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11 stuff">
+                <div class="main-chat-item-message">
+                  <p class="main-chat-item-message-name">Imperionchat</p>
+                  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Возвращайся оксмокс свое единственное запятой текстами всеми коварных если предупредила грамматики, ручеек взгляд? До, возвращайся!
+                  <p class="main-chat-item-message-date">08:12:55</p>
+                </div>
+                <div class="clean"></div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- /row -->
+ 
+      </div><!-- /container -->
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+            <textarea class="main-chat-textarea" name="main-chat-textarea" id="main-chat-textarea" rows="2" placeholder="Введите свое сообщение"></textarea>
+          </div>
+        </div><!-- /row -->
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+            <button class="main-chat-close-button" id="main-chat-close-button">Завершить чат</button>
+          </div>
+        </div><!-- /row -->
+    </section>
+
+  <section class="chat-form-offline chat-form-offline-answer" id="chat-form-offline-answer" style="display:none">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <p class="chat-form-offline-answer-introduction">К сожалению, наш консультант сейчас находится офф-лайн. По Вашему вопросу мы свяжемся с Вами в ближайшее время.</p>
+        </div>
+      </div><!-- /row -->
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="chat-form-offline-answer-message">
+            <div class="row">
+              <div class="col-xs-3 col-sm-3 col-md-1 col-lg-1"><img src="img/putin.jpg" alt="user" class="chat-form-offline-answer-message-img"></div>
+              <div class="col-xs-9 col-sm-9 col-md-11 col-lg-12">
+                <p class="chat-form-offline-answer-message-name" id="chat-form-offline-answer-message-name"></p>
+                <p class="chat-form-offline-answer-message-phone" id="chat-form-offline-answer-message-phone"></p>
+                <p class="chat-form-offline-answer-message-email" id="chat-form-offline-answer-message-email"></p>
+              </div>
+            </div><!-- /row -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <p class="chat-form-offline-answer-message-text" id="chat-form-offline-answer-message-text">
+                  <!-- Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Однажды вопроса, даль продолжил приставка? -->
+                </p>
+              </div>
+            </div><!-- /row -->
+          </div>
+        </div>
+      </div><!-- /row -->
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+          <div class="chat-form-offline-answer-button"><a href="#" onclick="viewChatForm()">Отправить другое</a></div>
+        </div>
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section><!-- /section -->
+
+  </div><!-- /main-chat-box -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/imperionchat.js"></script>
+
+</body>
+</html>
